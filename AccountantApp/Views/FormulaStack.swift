@@ -15,7 +15,9 @@ struct FormulaStack: View {
             ScrollView(showsIndicators: false) {
                 VStack(alignment: .leading) {
                     ForEach(self.objects, id: \.name) { object in
-                        FormulaItem(object: object)
+                        NavigationLink( destination: FormulaDetail(formula: object)) {
+                            FormulaItem(object: object)
+                        }
                     }
                     .padding(.bottom, 30)
                 }

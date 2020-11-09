@@ -12,17 +12,16 @@ struct FormulaDetail: View {
     
     var body: some View {
         List {
-            HStack(alignment: .top) {
+            ZStack {
+                Color.blue
                 Text(formula.name)
                     .font(.title)
             }
-            .padding(10)
-            .frame(width: 375, height: 150)
-            .background(Color.green.opacity(0.85))
             .shadow(radius: 5)
+            .frame(height: 120)
             .listRowInsets(EdgeInsets())
         }
-        .edgesIgnoringSafeArea(.top)
+        .edgesIgnoringSafeArea(.all)
     }
 }
 

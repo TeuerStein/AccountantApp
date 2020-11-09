@@ -316,6 +316,7 @@
 				DEVELOPMENT_TEAM = DHD4365Q83;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = AccountantApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -337,6 +338,7 @@
 				DEVELOPMENT_TEAM = DHD4365Q83;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = AccountantApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

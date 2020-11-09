@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "121106052-creative-illustration-of-gdp-gross-domestic-product-text-with-3d-arrow-financial-growth-graphic-grow.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

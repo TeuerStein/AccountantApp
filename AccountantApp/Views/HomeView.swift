@@ -10,11 +10,10 @@ import SwiftUI
 struct HomeView: View {
     var body: some View {
         NavigationView {
-            List {
+            VStack {
                 FormulaStack(objects: formulaData)
+                    .navigationBarTitle("Strong Calc")
             }
-            .navigationBarTitle("Strong Calc")
-            .padding(-5)
         }
     }
 }

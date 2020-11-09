@@ -12,19 +12,27 @@ struct FormulaItem: View {
 
     var body: some View {
         VStack(alignment: .center, spacing: 10.0) {
+            Image(object.picture)
+                .resizable()
+                .renderingMode(.original)
+                .aspectRatio(contentMode: .fill)
+                .frame(height: 190)
+                .padding(.top, -30)
+            
             Text(object.name)
-                .foregroundColor(.primary)
+                .foregroundColor(Color("FontColorForHomePageButtonsPrimary"))
                 .font(.headline)
             
             Text(object.description)
-                .foregroundColor(.secondary)
+                .foregroundColor(Color("FontColorForHomePageButtonsSecondary"))
                 .font(.subheadline)
                 .multilineTextAlignment(.leading)
                 .lineLimit(4)
+                .padding(15)
         }
         .padding(10)
-        .frame(height: 150)
-        .background(Color.orange.opacity(0.85))
+        .frame(width: 330, height: 330)
+        .background(Color("HomePageButtons").opacity(0.85))
         .cornerRadius(10)
         .shadow(radius: 5)
     }
@@ -32,6 +40,6 @@ struct FormulaItem: View {
 
 struct FormulaItem_Previews: PreviewProvider {
     static var previews: some View {
-        FormulaItem(object: formulaData[0])
+        FormulaItem(object: formulaData[1])
     }
 }

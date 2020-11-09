@@ -11,4 +11,5 @@ struct Formula: Hashable, Codable, Identifiable {
     var id: Int
     var name: String
     var description: String
+    var picture: String
 }

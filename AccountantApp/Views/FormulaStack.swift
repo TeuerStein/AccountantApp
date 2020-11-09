@@ -19,7 +19,7 @@ struct FormulaStack: View {
                             FormulaItem(object: object)
                         }
                     }
-                    .padding(.bottom, 30)
+                    .padding(10)
                 }
             }
         }

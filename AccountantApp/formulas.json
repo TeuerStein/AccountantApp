@@ -3,29 +3,34 @@
         "id": 1001,
         "name": "Gross domestic product",
         "description": "is a monetary measure of the market value of all the final goods and services produced in a specific time period. GDP (nominal) per capita does not, however, reflect differences in the cost of living and the inflation rates of the countries; therefore, using a basis of GDP per capita at purchasing power parity (PPP) is arguably more useful when comparing living standards between nations, while nominal GDP is more useful comparing national economies on the international market. ",
+        "picture": "Gross domestic product",
     },
     
     {
         "id": 1002,
         "name": "Annual percentage rate",
         "description": "is the interest rate for a whole year (annualized), rather than just a monthly fee/rate, as applied on a loan, mortgage loan, credit card, etc. It is a finance charge expressed as an annual rate.",
+        "picture": "Annual percentage rate",
     },
     
     {
         "id": 1003,
         "name": "Compound interest",
         "description": "is the addition of interest to the principal sum of a loan or deposit, or in other words, interest on interest. It is the result of reinvesting interest, rather than paying it out, so that interest in the next period is then earned on the principal sum plus previously accumulated interest. Compound interest is standard in finance and economics.",
+        "picture": "Compound interest",
     },
     
     {
         "id": 1003,
         "name": "Effective interest rate",
         "description": "or simply effective rate is the interest rate on a loan or financial product restated from the nominal interest rate and expressed as the equivalent interest rate if compound interest was payable annually in arrears.\n It is used to compare the interest rates between loans with different compounding periods, such as weekly, monthly, half-yearly or yearly. The effective interest rate sometimes differs in one important respect from the annual percentage rate (APR): the APR method converts this weekly or monthly interest rate into what would be called an annual rate that (in some parts of the world) doesn't take into account the effect of compounding.",
+        "picture": "Effective interest rate",
     },
     
     {
         "id": 1003,
         "name": "Compound interest",
         "description": "is the addition of interest to the principal sum of a loan or deposit, or in other words, interest on interest. It is the result of reinvesting interest, rather than paying it out, so that interest in the next period is then earned on the principal sum plus previously accumulated interest. Compound interest is standard in finance and economics.",
+        "picture": "Compound interest",
     }
 ]

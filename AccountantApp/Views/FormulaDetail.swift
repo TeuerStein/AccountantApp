@@ -12,13 +12,30 @@ struct FormulaDetail: View {
     
     var body: some View {
         List {
-            ZStack {
-                Color.blue
-                Text(formula.name)
-                    .font(.title)
+            ZStack(alignment: .bottom) {
+                Image(formula.picture)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                
+                Rectangle()
+                    .frame(height: 60)
+                    .opacity(0.45)
+                    .blur(radius: 10)
+                
+                
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text(formula.name)
+                            .font(.title)
+                            .foregroundColor(Color("InvertColorsForPrimaryText"))
+                    }
+                    .padding(.leading)
+                    .padding(.bottom)
+                    
+                    Spacer()
+                }
             }
             .shadow(radius: 5)
-            .frame(height: 120)
             .listRowInsets(EdgeInsets())
         }
         .edgesIgnoringSafeArea(.all)

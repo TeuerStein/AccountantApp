@@ -17,14 +17,14 @@ struct FormulaItem: View {
                 .renderingMode(.original)
                 .aspectRatio(contentMode: .fill)
                 .frame(height: 190)
-                .padding(.top, -30)
+                .padding(.top, -15)
             
             Text(object.name)
-                .foregroundColor(Color("FontColorForHomePageButtonsPrimary"))
+                .foregroundColor(Color("InvertColorsForPrimaryText"))
                 .font(.headline)
             
             Text(object.description)
-                .foregroundColor(Color("FontColorForHomePageButtonsSecondary"))
+                .foregroundColor(Color("InvertColorsForSecondaryText"))
                 .font(.subheadline)
                 .multilineTextAlignment(.leading)
                 .lineLimit(4)

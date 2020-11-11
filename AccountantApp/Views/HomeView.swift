@@ -12,7 +12,7 @@ struct HomeView: View {
         NavigationView {
             VStack {
                 FormulaStack(objects: formulaData)
-                    .navigationBarTitle("Strong Calc")
+                    .navigationBarTitle("Accountant Calc")
             }
         }
     }

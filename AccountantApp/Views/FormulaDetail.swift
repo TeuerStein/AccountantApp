@@ -13,6 +13,8 @@ struct FormulaDetail: View {
     var body: some View {
         List {
             ZStack(alignment: .bottom) {
+                // Title container code
+                
                 Image(formula.picture)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -37,7 +39,35 @@ struct FormulaDetail: View {
             }
             .shadow(radius: 5)
             .listRowInsets(EdgeInsets())
+            
+            VStack(alignment: .leading) {
+                // Short info about
+                
+                HStack {
+                    Text("Type: ")
+                        .font(.headline)
+                    
+                    Spacer()
+                    Text(formula.type)
+                        .font(.subheadline)
+                    Spacer()
+                }
+                
+                Spacer()
+                
+                HStack(alignment: .top) {
+                    Text("Measurement in: ")
+                        .font(.headline)
+                    
+                    Spacer()
+                    Text(formula.measurementIn)
+                        .font(.subheadline)
+                    Spacer()
+                }
+            }
+            .padding(.top)
         }
+        .padding(.top, -50)
         .edgesIgnoringSafeArea(.all)
     }
 }

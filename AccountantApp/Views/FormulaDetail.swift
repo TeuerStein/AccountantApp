@@ -23,6 +23,7 @@ struct FormulaDetail: View {
                     .frame(height: 60)
                     .opacity(0.45)
                     .blur(radius: 10)
+                    .foregroundColor(Color("HomePageButtons"))
                 
                 
                 HStack {
@@ -40,30 +41,44 @@ struct FormulaDetail: View {
             .shadow(radius: 5)
             .listRowInsets(EdgeInsets())
             
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 15) {
                 // Short info about
                 
                 HStack {
-                    Text("Type: ")
-                        .font(.headline)
+                    HStack(alignment: .top) {
+                        Text("Type: ")
+                            .font(.headline)
+                        Spacer()
+                    }
+                    .frame(width: 150)
                     
-                    Spacer()
                     Text(formula.type)
                         .font(.subheadline)
-                    Spacer()
                 }
-                
-                Spacer()
                 
                 HStack(alignment: .top) {
-                    Text("Measurement in: ")
-                        .font(.headline)
+                    HStack(alignment: .top) {
+                        Text("Measurement in: ")
+                            .font(.headline)
+                        Spacer()
+                    }
+                    .frame(width: 150)
                     
-                    Spacer()
                     Text(formula.measurementIn)
                         .font(.subheadline)
-                    Spacer()
                 }
+            }
+            .padding(.top)
+            .padding(.bottom)
+            
+            VStack(alignment: .center, spacing: 10) {
+                HStack(alignment: .top) {
+                    Text("Description")
+                        .font(.headline)
+                }
+                .frame(width: 150)
+                
+                Text(formula.description)
             }
             .padding(.top)
         }

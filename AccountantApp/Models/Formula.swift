@@ -15,3 +15,9 @@ struct Formula: Hashable, Codable, Identifiable {
     var measurementIn: String
     var picture: String
 }
+
+extension Formula {
+    func grossDomesticProduct() {
+        return
+    }
+}

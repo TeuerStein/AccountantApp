@@ -9,9 +9,6 @@ import SwiftUI
 import AVKit
 
 struct FormulaDetail: View {
-    @State var firstVariableForTextFields = ""
-    @State var secondVariableForTextFields = ""
-    @State var thirdVariableForTextFields = ""
     @State var result: String?
     
     var formula: Formula
@@ -106,21 +103,8 @@ struct FormulaDetail: View {
                         .multilineTextAlignment(.center)
                 }
                 
-                // Three TextFields for entering some variables
-                TextField("Enter first variable", text: $firstVariableForTextFields)
-                    .padding(10)
-                    .background(Color("HomePageButtons").opacity(0.85))
-                    .clipShape(Capsule())
-                
-                TextField("Enter second variable", text: $secondVariableForTextFields)
-                    .padding(10)
-                    .background(Color("HomePageButtons").opacity(0.85))
-                    .clipShape(Capsule())
-                
-                TextField("Enter third variable", text: $thirdVariableForTextFields)
-                    .padding(10)
-                    .background(Color("HomePageButtons").opacity(0.85))
-                    .clipShape(Capsule())
+                // Fields generator
+                calculatingFields(countOfFields: 7)
                 
                 Button("Calculate") { // Button for taking a variables into math functions --*beta*--
                     self.result = "here was be your result"
@@ -149,7 +133,7 @@ struct FormulaDetail: View {
                     .padding(.bottom)
                     .multilineTextAlignment(.center)
                 
-                // Video player. I can't bring any of videos from YouTube,
+                // Video player. I can't bring any videos from YouTube,
                 // and because of it I take video from other sites in the internet
                 VideoPlayer(player: AVPlayer(url: URL(string: "https://videos-fms.jwpsrv.com/0_5fb1424f_0x4ca193ff80192486b29e1483cb0d86234fd6d677/content/conversions/hmUZMORz/videos/WUUi5Lw4-3480264.mp4")!))
                     .frame(width: nil, height: 200)
@@ -167,6 +151,51 @@ struct FormulaDetail: View {
         }
         .padding(.top, -50)
         .edgesIgnoringSafeArea(.all)
+    }
+}
+
+struct calculatingFields: View {
+    // Code with TextField ( and variables  for they ) & Text
+    // for Calculating area
+    
+    @State var firstVariableForTextFields = ""
+    @State var secondVariableForTextFields = ""
+    @State var thirdVariableForTextFields = ""
+    @State var fourVariableForTextFields = ""
+    @State var fiveVariableForTextFields = ""
+    @State var sixVariableForTextFields = ""
+    @State var sevenVariableForTextFields = ""
+    
+    // Count of fields what is can be needed
+    // for calculating by formula
+    var countOfFields: Int
+    
+    var body: some View {
+        
+        // All fields for calculating
+        let fields: Binding<String> = [
+            self.firstVariableForTextFields,
+            self.secondVariableForTextFields,
+            self.thirdVariableForTextFields,
+            self.fourVariableForTextFields,
+            self.fiveVariableForTextFields,
+            self.sixVariableForTextFields,
+            self.sevenVariableForTextFields
+        ]
+        
+        ForEach(0..<self.countOfFields) { field in
+            // * BETA STATE OF *
+            
+            VStack(alignment: .leading) {
+                Text("Text")
+                    .padding(.leading, 10)
+                
+                TextField("Enter \(field) variable", text: (fields[field]))
+                    .padding(10)
+                    .background(Color("HomePageButtons").opacity(0.85))
+                    .clipShape(Capsule())
+            }
+        }
     }
 }
 

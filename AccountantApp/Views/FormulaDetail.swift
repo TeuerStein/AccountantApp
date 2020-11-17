@@ -9,8 +9,11 @@ import SwiftUI
 import AVKit
 
 struct FormulaDetail: View {
+    
+    // Variable for result of calculating
     @State var result: String?
     
+    // Variable for object
     var formula: Formula
     
     var body: some View {
@@ -104,7 +107,7 @@ struct FormulaDetail: View {
                 }
                 
                 // Fields generator
-                calculatingFields(countOfFields: 7)
+                CalculatingFields(countOfFields: 7)
                 
                 Button("Calculate") { // Button for taking a variables into math functions --*beta*--
                     self.result = "here was be your result"
@@ -154,17 +157,47 @@ struct FormulaDetail: View {
     }
 }
 
-struct calculatingFields: View {
+struct CalculatingFields: View {
     // Code with TextField ( and variables  for they ) & Text
     // for Calculating area
     
-    @State var firstVariableForTextFields = ""
-    @State var secondVariableForTextFields = ""
-    @State var thirdVariableForTextFields = ""
-    @State var fourVariableForTextFields = ""
-    @State var fiveVariableForTextFields = ""
-    @State var sixVariableForTextFields = ""
-    @State var sevenVariableForTextFields = ""
+    // All of fields what we'll be using
+    @State var firstVariableForTextFields: String = ""
+    @State var secondVariableForTextFields: String = ""
+    @State var thirdVariableForTextFields: String = ""
+    @State var fourVariableForTextFields: String = ""
+    @State var fiveVariableForTextFields: String = ""
+    @State var sixVariableForTextFields: String = ""
+    @State var sevenVariableForTextFields: String = ""
+    
+    // All fields for calculating.
+    // Array for fields
+    var fields: [Binding<String>] {
+        get {
+            let variableForGet = [
+                self.$firstVariableForTextFields,
+                self.$secondVariableForTextFields,
+                self.$thirdVariableForTextFields,
+                self.$fourVariableForTextFields,
+                self.$fiveVariableForTextFields,
+                self.$sixVariableForTextFields,
+                self.$sevenVariableForTextFields
+            ] as [Binding<String>]
+            
+            return variableForGet
+        }
+        set {
+            var _ = [
+                self.$firstVariableForTextFields,
+                self.$secondVariableForTextFields,
+                self.$thirdVariableForTextFields,
+                self.$fourVariableForTextFields,
+                self.$fiveVariableForTextFields,
+                self.$sixVariableForTextFields,
+                self.$sevenVariableForTextFields
+            ] as [Binding<String>]
+        }
+    }
     
     // Count of fields what is can be needed
     // for calculating by formula
@@ -172,25 +205,20 @@ struct calculatingFields: View {
     
     var body: some View {
         
-        // All fields for calculating
-        let fields: Binding<String> = [
-            self.firstVariableForTextFields,
-            self.secondVariableForTextFields,
-            self.thirdVariableForTextFields,
-            self.fourVariableForTextFields,
-            self.fiveVariableForTextFields,
-            self.sixVariableForTextFields,
-            self.sevenVariableForTextFields
-        ]
         
+        // Generating fields for object
         ForEach(0..<self.countOfFields) { field in
             // * BETA STATE OF *
             
             VStack(alignment: .leading) {
+                
+                // Text for title
                 Text("Text")
                     .padding(.leading, 10)
                 
-                TextField("Enter \(field) variable", text: (fields[field]))
+                
+                // One of fields from fields array
+                TextField("Enter seven variable", text: fields[field])
                     .padding(10)
                     .background(Color("HomePageButtons").opacity(0.85))
                     .clipShape(Capsule())

@@ -46,8 +46,8 @@ struct FormulaDetail: View {
                     Spacer()
                 }
             }
-            .shadow(radius: 5)
             .listRowInsets(EdgeInsets())
+            .padding(.bottom)
             
             LazyVStack(alignment: .leading, spacing: 15) {
                 // Short info about
@@ -56,28 +56,34 @@ struct FormulaDetail: View {
                     HStack(alignment: .top) {
                         Text("Type: ")
                             .font(.headline)
+                            .foregroundColor(Color("InvertColorsForPrimaryText"))
                         Spacer()
                     }
                     .frame(width: 150)
                     
                     Text(formula.type)
                         .font(.subheadline)
+                        .foregroundColor(Color("InvertColorsForSecondaryText"))
                 }
                 
                 HStack(alignment: .top) {
                     HStack(alignment: .top) {
                         Text("Measurement in: ")
                             .font(.headline)
+                            .foregroundColor(Color("InvertColorsForPrimaryText"))
                         Spacer()
                     }
                     .frame(width: 150)
                     
                     Text(formula.measurementIn)
                         .font(.subheadline)
+                        .foregroundColor(Color("InvertColorsForSecondaryText"))
                 }
             }
-            .padding(.top)
-            .padding(.bottom)
+            .padding()
+            .background(Color("HomePageButtons"))
+            .cornerRadius(10)
+            .shadow(radius: 4)
             
             LazyVStack(alignment: .center, spacing: 10) {
                 // Description area
@@ -86,14 +92,18 @@ struct FormulaDetail: View {
                 HStack(alignment: .top) {
                     Text("Description")
                         .font(.headline)
+                        .foregroundColor(Color("InvertColorsForPrimaryText"))
                 }
                 .frame(width: 150)
                 
                 // Description
                 Text(formula.description)
+                    .foregroundColor(Color("InvertColorsForSecondaryText"))
             }
-            .padding(.top)
-            .padding(.bottom)
+            .padding()
+            .background(Color("HomePageButtons"))
+            .cornerRadius(10)
+            .shadow(radius: 4)
             
             LazyVStack(spacing: 30) {
                 // Area for calculating
@@ -107,22 +117,24 @@ struct FormulaDetail: View {
                 }
                 
                 // Fields generator
-                CalculatingFields(countOfFields: 7)
+                CalculatingFields(countOfFields: 6)
                 
                 Button("Calculate") { // Button for taking a variables into math functions --*beta*--
                     self.result = "here was be your result"
                 }
                 .frame(width: 120, height: 60)
                 .cornerRadius(15)
-                .background(Color("HomePageButtons"))
-                .foregroundColor(Color("InvertColorsForPrimaryText"))
+                .background(Color("InvertColorsForPrimaryText"))
+                .foregroundColor(Color("HomePageButtons"))
+                .cornerRadius(10)
+                .shadow(radius: 4)
                 .font(.headline)
                 
                 HStack {
                     // Result of calculating
                     
                     Text(result ?? "Let's calculate!") // There will be your result,
-                                    // now I'll create simple text here
+                        .foregroundColor(Color("InvertColorsForPrimaryText")) // now I'll create simple text here
                 }
             }
             .padding(.top, 10)
@@ -132,17 +144,24 @@ struct FormulaDetail: View {
                 // Video block
                 
                 // Title for block
-                Text("Also you can watch the video about economics")
-                    .padding(.bottom)
-                    .multilineTextAlignment(.center)
+                HStack {
+                    Text("Also you can watch the video about economics")
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(Color("InvertColorsForPrimaryText"))
+                }
+                .padding(.top, 10)
+                .padding(.trailing, 10)
+                .padding(.bottom, 10)
+                .padding(.leading, 10)
+                .background(Color("HomePageButtons"))
+                .cornerRadius(10)
+                .shadow(radius: 4)
                 
                 // Video player. I can't bring any videos from YouTube,
                 // and because of it I take video from other sites in the internet
-                VideoPlayer(player: AVPlayer(url: URL(string: "https://videos-fms.jwpsrv.com/0_5fb1424f_0x4ca193ff80192486b29e1483cb0d86234fd6d677/content/conversions/hmUZMORz/videos/WUUi5Lw4-3480264.mp4")!))
+                VideoPlayer(player: AVPlayer(url: URL(string: "https://content.jwplatform.com/manifests/FYyScuyE.m3u8")!))
                     .frame(width: nil, height: 200)
             }
-            .padding(.top)
-            .padding(.bottom)
             
             LazyVStack(alignment: .center) {
                 // Developer's block
@@ -170,40 +189,23 @@ struct CalculatingFields: View {
     @State var sixVariableForTextFields: String = ""
     @State var sevenVariableForTextFields: String = ""
     
-    // All fields for calculating.
-    // Array for fields
-    var fields: [Binding<String>] {
-        get {
-            let variableForGet = [
-                self.$firstVariableForTextFields,
-                self.$secondVariableForTextFields,
-                self.$thirdVariableForTextFields,
-                self.$fourVariableForTextFields,
-                self.$fiveVariableForTextFields,
-                self.$sixVariableForTextFields,
-                self.$sevenVariableForTextFields
-            ] as [Binding<String>]
-            
-            return variableForGet
-        }
-        set {
-            var _ = [
-                self.$firstVariableForTextFields,
-                self.$secondVariableForTextFields,
-                self.$thirdVariableForTextFields,
-                self.$fourVariableForTextFields,
-                self.$fiveVariableForTextFields,
-                self.$sixVariableForTextFields,
-                self.$sevenVariableForTextFields
-            ] as [Binding<String>]
-        }
-    }
-    
     // Count of fields what is can be needed
     // for calculating by formula
     var countOfFields: Int
     
     var body: some View {
+        
+        // All fields for calculating.
+        // Array for fields
+        var fields: [Binding<String>] = [
+            self.$firstVariableForTextFields,
+            self.$secondVariableForTextFields,
+            self.$thirdVariableForTextFields,
+            self.$fourVariableForTextFields,
+            self.$fiveVariableForTextFields,
+            self.$sixVariableForTextFields,
+            self.$sevenVariableForTextFields
+        ]
         
         
         // Generating fields for object
@@ -213,12 +215,12 @@ struct CalculatingFields: View {
             VStack(alignment: .leading) {
                 
                 // Text for title
-                Text("Text")
+                Text("Text for test")
                     .padding(.leading, 10)
                 
                 
                 // One of fields from fields array
-                TextField("Enter seven variable", text: fields[field])
+                TextField("Enter \(field + 1) variable", text: fields[field])
                     .padding(10)
                     .background(Color("HomePageButtons").opacity(0.85))
                     .clipShape(Capsule())

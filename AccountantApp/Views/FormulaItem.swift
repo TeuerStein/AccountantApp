@@ -30,7 +30,7 @@ struct FormulaItem: View {
                 .lineLimit(4)
                 .padding(15)
         }
-        .padding(10)
+        .padding(12)
         .frame(width: 330, height: 330)
         .background(Color("HomePageButtons").opacity(0.85))
         .cornerRadius(10)

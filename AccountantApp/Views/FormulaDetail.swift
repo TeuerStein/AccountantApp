@@ -11,7 +11,7 @@ import AVKit
 struct FormulaDetail: View {
     
     // Variable for result of calculating
-    @State var result: String?
+    @State var result: Int? = 0
     
     // Variable for object
     var formula: Formula
@@ -117,10 +117,10 @@ struct FormulaDetail: View {
                 }
                 
                 // Fields generator
-                CalculatingFields(countOfFields: 6)
+                CalculatingFields(countOfFields: Int(formula.countOfFields)!)
                 
                 Button("Calculate") { // Button for taking a variables into math functions --*beta*--
-                    self.result = "here was be your result"
+                    self.result = 0
                 }
                 .frame(width: 120, height: 60)
                 .cornerRadius(15)
@@ -133,12 +133,14 @@ struct FormulaDetail: View {
                 HStack {
                     // Result of calculating
                     
-                    Text(result ?? "Let's calculate!") // There will be your result,
+                    Text("\(result ?? 0)") // There will be your result,
                         .foregroundColor(Color("InvertColorsForPrimaryText")) // now I'll create simple text here
                 }
             }
-            .padding(.top, 10)
-            .padding(.bottom)
+            .padding()
+            .background(Color("HomePageButtons"))
+            .cornerRadius(10)
+            .shadow(radius: 4)
             
             LazyVStack {
                 // Video block
@@ -197,7 +199,7 @@ struct CalculatingFields: View {
         
         // All fields for calculating.
         // Array for fields
-        var fields: [Binding<String>] = [
+        let fields: [Binding<String>] = [
             self.$firstVariableForTextFields,
             self.$secondVariableForTextFields,
             self.$thirdVariableForTextFields,
@@ -207,23 +209,19 @@ struct CalculatingFields: View {
             self.$sevenVariableForTextFields
         ]
         
-        
         // Generating fields for object
         ForEach(0..<self.countOfFields) { field in
             // * BETA STATE OF *
             
             VStack(alignment: .leading) {
                 
-                // Text for title
-                Text("Text for test")
-                    .padding(.leading, 10)
-                
-                
                 // One of fields from fields array
                 TextField("Enter \(field + 1) variable", text: fields[field])
+                    .frame(width: 250)
+                    .multilineTextAlignment(.center)
                     .padding(10)
-                    .background(Color("HomePageButtons").opacity(0.85))
                     .clipShape(Capsule())
+                    .shadow(color: Color("InvertColorsForPrimaryText"), radius: 10)
             }
         }
     }

@@ -14,6 +14,8 @@ struct Formula: Hashable, Codable, Identifiable {
     var type: String
     var measurementIn: String
     var picture: String
+    
+    var countOfFields: String
 }
 
 extension Formula {

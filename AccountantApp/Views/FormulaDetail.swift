@@ -117,7 +117,7 @@ struct FormulaDetail: View {
                 }
                 
                 // Fields generator
-                CalculatingFields(countOfFields: Int(formula.countOfFields)!)
+                CalculatingFields(countOfFields: Int(formula.countOfFields)!, formulaDetailStructure: self.formula)
                 
                 Button("Calculate") { // Button for taking a variables into math functions --*beta*--
                     self.result = 0
@@ -195,6 +195,9 @@ struct CalculatingFields: View {
     // for calculating by formula
     var countOfFields: Int
     
+    // New variable for using a 'formula' object
+    var formulaDetailStructure: Formula
+    
     var body: some View {
         
         // All fields for calculating.
@@ -211,18 +214,47 @@ struct CalculatingFields: View {
         
         // Generating fields for object
         ForEach(0..<self.countOfFields) { field in
-            // * BETA STATE OF *
-            
             VStack(alignment: .leading) {
                 
                 // One of fields from fields array
-                TextField("Enter \(field + 1) variable", text: fields[field])
+                TextField("\(TextForFields(formulaObject: self.formulaDetailStructure, coutForEach: field).themeOfFormula())", text: fields[field])
                     .frame(width: 250)
                     .multilineTextAlignment(.center)
                     .padding(10)
                     .clipShape(Capsule())
                     .shadow(color: Color("InvertColorsForPrimaryText"), radius: 10)
             }
+        }
+    }
+}
+
+struct TextForFields {
+    
+    // Const with object
+    let formulaObject: Formula
+    
+    // Counts of numbers from ForEach for themeOfFormula function
+    var coutForEach: Int
+    
+    // Function for adding the names for fields
+    func themeOfFormula() -> String {
+        // * BETA STATE OF *
+        
+        // Checking the name of current object
+        // and view names of fields
+        if formulaObject.name == "Gross domestic product" {
+            let textResultForFields = [
+                "Private consumption",
+                "Gross investment",
+                "Government investment",
+                "Government spending",
+                "Exports",
+                "Imports"
+            ]
+            return textResultForFields[self.coutForEach]
+        } else {
+            let textResultForFields = ["Other"]
+            return textResultForFields[self.coutForEach]
         }
     }
 }

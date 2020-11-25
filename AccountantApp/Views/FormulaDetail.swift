@@ -252,9 +252,28 @@ struct TextForFields {
                 "Imports"
             ]
             return textResultForFields[self.coutForEach]
-        } else {
-            let textResultForFields = ["Other"]
+        } else if formulaObject.name == "Annual percentage rate" {
+            let textResultForFields = [
+                "Loan Amount",
+                "Interest Rate (%)",
+                "Length of Loan/Months",
+                "Cost"
+            ]
             return textResultForFields[self.coutForEach]
+        } else if formulaObject.name == "Compound interest"{
+            let textResultForFields = [
+                "Interest",
+                "Compound"
+            ]
+            return textResultForFields[self.coutForEach]
+        } else if formulaObject.name == "Effective interest rate" {
+            let textResultForFields = [
+                "nominal rate",
+                "number of compounding periods",
+            ]
+            return textResultForFields[self.coutForEach]
+        } else {
+            return ""
         }
     }
 }

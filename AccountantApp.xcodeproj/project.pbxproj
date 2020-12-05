@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B37FEC77257C193B00E9DAA1 /* AccountantMathByFormulas.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37FEC76257C193B00E9DAA1 /* AccountantMathByFormulas.swift */; };
 		B95409D72556C4BB0089B212 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95409D62556C4BB0089B212 /* AppDelegate.swift */; };
 		B95409D92556C4BB0089B212 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95409D82556C4BB0089B212 /* SceneDelegate.swift */; };
 		B95409DD2556C4BD0089B212 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B95409DC2556C4BD0089B212 /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B37FEC76257C193B00E9DAA1 /* AccountantMathByFormulas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountantMathByFormulas.swift; sourceTree = SOURCE_ROOT; };
 		B95409D32556C4BB0089B212 /* AccountantApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AccountantApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B95409D62556C4BB0089B212 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B95409D82556C4BB0089B212 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 		B95409D52556C4BB0089B212 /* AccountantApp */ = {
 			isa = PBXGroup;
 			children = (
+				B37FEC76257C193B00E9DAA1 /* AccountantMathByFormulas.swift */,
 				B9540A092556C59E0089B212 /* Models */,
 				B9540A0B2556C5B20089B212 /* Views */,
 				B95409D62556C4BB0089B212 /* AppDelegate.swift */,
@@ -183,6 +186,7 @@
 				B9540A012556C5950089B212 /* FormulaStack.swift in Sources */,
 				B95409D72556C4BB0089B212 /* AppDelegate.swift in Sources */,
 				B95409D92556C4BB0089B212 /* SceneDelegate.swift in Sources */,
+				B37FEC77257C193B00E9DAA1 /* AccountantMathByFormulas.swift in Sources */,
 				B9540A142556CFBB0089B212 /* FormulaDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

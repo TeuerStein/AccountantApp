@@ -17,9 +17,3 @@ struct Formula: Hashable, Codable, Identifiable {
     
     var countOfFields: String
 }
-
-extension Formula {
-    func grossDomesticProduct() {
-        return
-    }
-}

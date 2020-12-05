@@ -117,10 +117,19 @@ struct FormulaDetail: View {
                 }
                 
                 // Fields generator
-                CalculatingFields(countOfFields: Int(formula.countOfFields)!, formulaDetailStructure: self.formula)
+                let calculatingFields: CalculatingFields = CalculatingFields(countOfFields: Int(formula.countOfFields)!, formulaDetailStructure: self.formula)
+                calculatingFields.body
                 
                 Button("Calculate") { // Button for taking a variables into math functions --*beta*--
-                    self.result = 0
+                    let resultOfCalculating: AccountantMathByFormulas
+                    resultOfCalculating.grossDomesticProduct( // * None-working code here *
+                        privateConsumption: Double(calculatingFields.firstVariableForTextFields)!,
+                        grossInvestment: Double(calculatingFields.secondVariableForTextFields)!,
+                        governmentInvestment: Double(calculatingFields.thirdVariableForTextFields)!,
+                        governmentSpending: Double(calculatingFields.fourVariableForTextFields)!,
+                        exports: Double(calculatingFields.fiveVariableForTextFields)!,
+                        imports: Double(calculatingFields.sixVariableForTextFields)!
+                    )
                 }
                 .frame(width: 120, height: 60)
                 .cornerRadius(15)

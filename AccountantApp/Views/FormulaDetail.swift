@@ -117,27 +117,11 @@ struct FormulaDetail: View {
                 }
                 
                 // Fields generator
-                let calculatingFields: CalculatingFields = CalculatingFields(countOfFields: Int(formula.countOfFields)!, formulaDetailStructure: self.formula)
+                let calculatingFields: CalculatingFields = CalculatingFields(
+                    countOfFields: formula.countOfFields,
+                    formulaDetailStructure: self.formula
+                )
                 calculatingFields.body
-                
-                Button("Calculate") { // Button for taking a variables into math functions --*beta*--
-                    let resultOfCalculating: AccountantMathByFormulas
-                    resultOfCalculating.grossDomesticProduct( // * None-working code here *
-                        privateConsumption: Double(calculatingFields.firstVariableForTextFields)!,
-                        grossInvestment: Double(calculatingFields.secondVariableForTextFields)!,
-                        governmentInvestment: Double(calculatingFields.thirdVariableForTextFields)!,
-                        governmentSpending: Double(calculatingFields.fourVariableForTextFields)!,
-                        exports: Double(calculatingFields.fiveVariableForTextFields)!,
-                        imports: Double(calculatingFields.sixVariableForTextFields)!
-                    )
-                }
-                .frame(width: 120, height: 60)
-                .cornerRadius(15)
-                .background(Color("InvertColorsForPrimaryText"))
-                .foregroundColor(Color("HomePageButtons"))
-                .cornerRadius(10)
-                .shadow(radius: 4)
-                .font(.headline)
                 
                 HStack {
                     // Result of calculating
@@ -191,14 +175,10 @@ struct CalculatingFields: View {
     // Code with TextField ( and variables  for they ) & Text
     // for Calculating area
     
-    // All of fields what we'll be using
-    @State var firstVariableForTextFields: String = ""
-    @State var secondVariableForTextFields: String = ""
-    @State var thirdVariableForTextFields: String = ""
-    @State var fourVariableForTextFields: String = ""
-    @State var fiveVariableForTextFields: String = ""
-    @State var sixVariableForTextFields: String = ""
-    @State var sevenVariableForTextFields: String = ""
+    // Initialized a mass of fields for calculating area
+    // * We need to create fields inside this mass
+    // for getting better readable of code *
+    @State var massOfField: [Binding<String>]? // * BETA STATE OF *
     
     // Count of fields what is can be needed
     // for calculating by formula
@@ -209,24 +189,12 @@ struct CalculatingFields: View {
     
     var body: some View {
         
-        // All fields for calculating.
-        // Array for fields
-        let fields: [Binding<String>] = [
-            self.$firstVariableForTextFields,
-            self.$secondVariableForTextFields,
-            self.$thirdVariableForTextFields,
-            self.$fourVariableForTextFields,
-            self.$fiveVariableForTextFields,
-            self.$sixVariableForTextFields,
-            self.$sevenVariableForTextFields
-        ]
-        
         // Generating fields for object
         ForEach(0..<self.countOfFields) { field in
             VStack(alignment: .leading) {
                 
                 // One of fields from fields array
-                TextField("\(TextForFields(formulaObject: self.formulaDetailStructure, coutForEach: field).themeOfFormula())", text: fields[field])
+                TextField("\(TextForFields(formulaObject: self.formulaDetailStructure, coutForEach: field).themeOfFormula())", text: self.massOfField![field])
                     .frame(width: 250)
                     .multilineTextAlignment(.center)
                     .padding(10)
@@ -234,6 +202,17 @@ struct CalculatingFields: View {
                     .shadow(color: Color("InvertColorsForPrimaryText"), radius: 10)
             }
         }
+        
+        Button("Calculate") { // Button for taking a variables into math functions --*beta*--
+            
+        }
+        .frame(width: 120, height: 60)
+        .cornerRadius(15)
+        .background(Color("InvertColorsForPrimaryText"))
+        .foregroundColor(Color("HomePageButtons"))
+        .cornerRadius(10)
+        .shadow(radius: 4)
+        .font(.headline)
     }
 }
 

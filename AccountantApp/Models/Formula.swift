@@ -15,5 +15,5 @@ struct Formula: Hashable, Codable, Identifiable {
     var measurementIn: String
     var picture: String
     
-    var countOfFields: String
+    var countOfFields: Int
 }

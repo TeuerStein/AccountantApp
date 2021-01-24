@@ -7,7 +7,7 @@
         "measurementIn": "GDP per capita at purchasing power parity (PPP)",
         "picture": "Gross domestic product",
         
-        "countOfFields" : "6",
+        "countOfFields": "6",
     },
     
     {
@@ -18,7 +18,7 @@
         "measurementIn": "GDP per capita at purchasing power parity (PPP)",
         "picture": "Annual percentage rate",
         
-        "countOfFields" : "4",
+        "countOfFields": "4",
     },
     
     {
@@ -29,28 +29,28 @@
         "measurementIn": "GDP per capita at purchasing power parity (PPP)",
         "picture": "Compound interest",
         
-        "countOfFields" : "2",
+        "countOfFields": "2",
     },
     
     {
-        "id": 1003,
+        "id": 1004,
         "name": "Effective interest rate",
         "description": "or simply effective rate is the interest rate on a loan or financial product restated from the nominal interest rate and expressed as the equivalent interest rate if compound interest was payable annually in arrears.\n It is used to compare the interest rates between loans with different compounding periods, such as weekly, monthly, half-yearly or yearly. The effective interest rate sometimes differs in one important respect from the annual percentage rate (APR): the APR method converts this weekly or monthly interest rate into what would be called an annual rate that (in some parts of the world) doesn't take into account the effect of compounding.",
         "type": "Economics",
         "measurementIn": "GDP per capita at purchasing power parity (PPP)",
         "picture": "Effective interest rate",
         
-        "countOfFields" : "2",
+        "countOfFields": "2",
     },
     
     {
-        "id": 1003,
+        "id": 1005,
         "name": "Compound interest",
         "description": "is the addition of interest to the principal sum of a loan or deposit, or in other words, interest on interest. It is the result of reinvesting interest, rather than paying it out, so that interest in the next period is then earned on the principal sum plus previously accumulated interest. Compound interest is standard in finance and economics.",
         "type": "Economics",
         "measurementIn": "GDP per capita at purchasing power parity (PPP)",
         "picture": "Compound interest",
         
-        "countOfFields" : "2",
+        "countOfFields": "2",
     }
 ]

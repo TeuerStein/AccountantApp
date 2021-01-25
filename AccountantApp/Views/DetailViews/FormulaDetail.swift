@@ -157,10 +157,7 @@ struct CalculatingArea: View {
             }
             
             // Fields generator
-            let calculatingFields: CalculatingFields = CalculatingFields(
-                countOfFields: formula.countOfFields,
-                formulaDetailStructure: self.formula
-            )
+            let calculatingFields: CalculatingFields = CalculatingFields(formulaId: formula.id, countOfFields: formula.countOfFields)
             calculatingFields.body
             
             HStack {

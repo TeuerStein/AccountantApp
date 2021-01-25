@@ -11,45 +11,50 @@ struct CalculatingFields: View {
     // Code with TextField ( and variables  for they ) & Text
     // for Calculating area
     
-    // Initialized a mass of fields for calculating area
-    // * We need to create fields inside this mass
-    // for getting more readable code *
-    @State var massOfField: [Binding<String>]? // * BETA STATE OF *
+    var formulaId: Int
+    
+    @State var firstVariableForTextFields: String = ""
+    @State var secondVariableForTextFields: String = ""
+    @State var thirdVariableForTextFields: String = ""
+    @State var fourVariableForTextFields: String = ""
+    @State var fiveVariableForTextFields: String = ""
+    @State var sixVariableForTextFields: String = ""
+    @State var sevenVariableForTextFields: String = ""
     
     // Count of fields what is can be needed
     // for calculating by formula
     var countOfFields: Int
     
-    // New variable for using a 'formula' object
-    var formulaDetailStructure: Formula
-    
     var body: some View {
         
-        // Generating fields for object
-        ForEach(0..<self.countOfFields) { field in
+        var massOfFields = [
+            self.$firstVariableForTextFields,
+            self.$secondVariableForTextFields,
+            self.$thirdVariableForTextFields,
+            self.$fourVariableForTextFields,
+            self.$fiveVariableForTextFields,
+            self.$sixVariableForTextFields,
+            self.$sevenVariableForTextFields
+        ]
+        
+        ForEach(0..<countOfFields) { field in
             VStack(alignment: .leading) {
+                Text("Text")
+                    .padding(.leading, 10)
                 
-                // One of fields from fields array
-                TextField("\(TextForFields(formulaObject: self.formulaDetailStructure, coutForEach: field).themeOfFormula())", text: self.massOfField![field])
-                    .frame(width: 250)
-                    .multilineTextAlignment(.center)
+                TextField("Enter \(field + 1) variable", text: massOfFields[field])
                     .padding(10)
+                    .background(Color("HomePageButtons").opacity(0.85))
                     .clipShape(Capsule())
-                    .shadow(color: Color("InvertColorsForPrimaryText"), radius: 10)
             }
         }
         
-        Button("Calculate") { // Button for taking a variables into math functions --*beta*--
+        Button("Result") { // calculation button
             
         }
-        .frame(width: 120, height: 60)
-        .cornerRadius(15)
-        .background(Color("InvertColorsForPrimaryText"))
-        .foregroundColor(Color("HomePageButtons"))
-        .cornerRadius(10)
-        .shadow(radius: 4)
-        .font(.headline)
+        
     }
+    
 }
 
 struct TextForFields {

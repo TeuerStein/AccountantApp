@@ -7,7 +7,7 @@
         "measurementIn": "GDP per capita at purchasing power parity (PPP)",
         "picture": "Gross domestic product",
         
-        "countOfFields": "6",
+        "countOfFields": 6,
     },
     
     {
@@ -18,7 +18,7 @@
         "measurementIn": "GDP per capita at purchasing power parity (PPP)",
         "picture": "Annual percentage rate",
         
-        "countOfFields": "4",
+        "countOfFields": 4,
     },
     
     {
@@ -29,7 +29,7 @@
         "measurementIn": "GDP per capita at purchasing power parity (PPP)",
         "picture": "Compound interest",
         
-        "countOfFields": "2",
+        "countOfFields": 2,
     },
     
     {
@@ -40,7 +40,7 @@
         "measurementIn": "GDP per capita at purchasing power parity (PPP)",
         "picture": "Effective interest rate",
         
-        "countOfFields": "2",
+        "countOfFields": 2,
     },
     
     {
@@ -51,6 +51,6 @@
         "measurementIn": "GDP per capita at purchasing power parity (PPP)",
         "picture": "Compound interest",
         
-        "countOfFields": "2",
+        "countOfFields": 2,
     }
 ]

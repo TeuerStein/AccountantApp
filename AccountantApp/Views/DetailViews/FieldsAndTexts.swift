@@ -11,6 +11,8 @@ struct CalculatingFields: View {
     // Code with TextField ( and variables  for they ) & Text
     // for Calculating area
     
+    @State var formulaObject: Formula
+    
     var formulaId: Int
     
     @State var firstVariableForTextFields: String = ""
@@ -27,7 +29,7 @@ struct CalculatingFields: View {
     
     var body: some View {
         
-        var massOfFields = [
+        let massOfFields = [
             self.$firstVariableForTextFields,
             self.$secondVariableForTextFields,
             self.$thirdVariableForTextFields,
@@ -37,9 +39,11 @@ struct CalculatingFields: View {
             self.$sevenVariableForTextFields
         ]
         
+        let textForFields = TextForFields(formulaObject: self.formulaObject)
+        
         ForEach(0..<countOfFields) { field in
             VStack(alignment: .leading) {
-                Text("Text")
+                Text("\(textForFields.textResultForFields[field])")
                     .padding(.leading, 10)
                 
                 TextField("Enter \(field + 1) variable", text: massOfFields[field])
@@ -52,6 +56,7 @@ struct CalculatingFields: View {
         Button("Result") { // calculation button
             
         }
+        .font(.headline)
         
     }
     
@@ -62,47 +67,81 @@ struct TextForFields {
     // Const with object
     let formulaObject: Formula
     
-    // Counts of numbers from ForEach for themeOfFormula function
-    var coutForEach: Int
-    
-    // Function for adding the names for fields
-    func themeOfFormula() -> String {
-        // * BETA STATE OF *
+    var textResultForFields: [String] {
+        get {
+            // Checking the name of current object
+            // and view names of fields
+            if formulaObject.name == "Gross domestic product" {
+                let newValue = [
+                    "Private consumption",
+                    "Gross investment",
+                    "Government investment",
+                    "Government spending",
+                    "Exports",
+                    "Imports"
+                ]
+                return newValue
+            } else if formulaObject.name == "Annual percentage rate" {
+                let newValue = [
+                    "Loan Amount",
+                    "Interest Rate (%)",
+                    "Length of Loan/Months",
+                    "Cost"
+                ]
+                return newValue
+            } else if formulaObject.name == "Compound interest"{
+                let newValue = [
+                    "Interest",
+                    "Compound"
+                ]
+                return newValue
+            } else if formulaObject.name == "Effective interest rate" {
+                let newValue = [
+                    "nominal rate",
+                    "number of compounding periods",
+                ]
+                return newValue
+            }
+            
+            return [""]
+        }
         
-        // Checking the name of current object
-        // and view names of fields
-        if formulaObject.name == "Gross domestic product" {
-            let textResultForFields = [
-                "Private consumption",
-                "Gross investment",
-                "Government investment",
-                "Government spending",
-                "Exports",
-                "Imports"
-            ]
-            return textResultForFields[self.coutForEach]
-        } else if formulaObject.name == "Annual percentage rate" {
-            let textResultForFields = [
-                "Loan Amount",
-                "Interest Rate (%)",
-                "Length of Loan/Months",
-                "Cost"
-            ]
-            return textResultForFields[self.coutForEach]
-        } else if formulaObject.name == "Compound interest"{
-            let textResultForFields = [
-                "Interest",
-                "Compound"
-            ]
-            return textResultForFields[self.coutForEach]
-        } else if formulaObject.name == "Effective interest rate" {
-            let textResultForFields = [
-                "nominal rate",
-                "number of compounding periods",
-            ]
-            return textResultForFields[self.coutForEach]
-        } else {
-            return ""
+        set {
+            // Checking the name of current object
+            // and view names of fields
+            if formulaObject.name == "Gross domestic product" {
+                textResultForFields = [
+                    "Private consumption",
+                    "Gross investment",
+                    "Government investment",
+                    "Government spending",
+                    "Exports",
+                    "Imports"
+                ]
+            } else if formulaObject.name == "Annual percentage rate" {
+                textResultForFields = [
+                    "Loan Amount",
+                    "Interest Rate (%)",
+                    "Length of Loan/Months",
+                    "Cost"
+                ]
+            } else if formulaObject.name == "Compound interest"{
+                textResultForFields = [
+                    "Interest",
+                    "Compound"
+                ]
+            } else if formulaObject.name == "Effective interest rate" {
+                textResultForFields = [
+                    "nominal rate",
+                    "number of compounding periods",
+                ]
+            } else {
+                textResultForFields = []
+            }
         }
     }
+    
+    
+    
+    
 }

@@ -11,30 +11,31 @@ struct FormulaItem: View {
     var object: Formula
 
     var body: some View {
-        VStack(alignment: .center, spacing: 10.0) {
-            Image(object.picture)
-                .resizable()
-                .renderingMode(.original)
-                .aspectRatio(contentMode: .fill)
-                .frame(height: 190)
-                .padding(.top, -15)
-            
-            Text(object.name)
-                .foregroundColor(Color("InvertColorsForPrimaryText"))
-                .font(.headline)
-            
-            Text(object.description)
-                .foregroundColor(Color("InvertColorsForSecondaryText"))
-                .font(.subheadline)
-                .multilineTextAlignment(.leading)
-                .lineLimit(4)
-                .padding(15)
+        GeometryReader { geometry in
+            LazyVStack(alignment: .center, spacing: 10.0) {
+                Image(object.picture)
+                    .resizable()
+                    .renderingMode(.original)
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: geometry.size.width, height: 190)
+                    .padding(.top, -15)
+                
+                Text(object.name)
+                    .foregroundColor(Color("InvertColorsForPrimaryText"))
+                    .font(.headline)
+                
+                Text(object.description)
+                    .foregroundColor(Color("InvertColorsForSecondaryText"))
+                    .font(.subheadline)
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(4)
+                    .padding(.horizontal, 10)
+            }
+            .frame(width: .infinity, height: 330)
+            .background(Color("HomePageButtons").opacity(0.85))
+            .cornerRadius(10)
+            .shadow(radius: 5)
         }
-        .padding(12)
-        .frame(width: 330, height: 330)
-        .background(Color("HomePageButtons").opacity(0.85))
-        .cornerRadius(10)
-        .shadow(radius: 5)
     }
 }
 

@@ -11,16 +11,9 @@ struct FormulaStack: View {
     var objects: [Formula]
     
     var body: some View {
-        HStack {
+        GeometryReader { geometry in
             ScrollView(showsIndicators: false) {
-                VStack(alignment: .leading) {
-                    ForEach(self.objects, id: \.name) { object in
-                        NavigationLink( destination: FormulaDetail(formula: object)) {
-                            FormulaItem(object: object)
-                        }
-                    }
-                    .padding(10)
-                }
+                GenerateItems(objects: objects, geometry: geometry)
             }
         }
     }
@@ -29,5 +22,24 @@ struct FormulaStack: View {
 struct FormulaStack_Previews: PreviewProvider {
     static var previews: some View {
         FormulaStack(objects: formulaData)
+    }
+}
+
+struct GenerateItems: View {
+    var objects: [Formula]
+    var geometry: GeometryProxy
+    
+    var body: some View {
+        VStack(alignment: .center, spacing: 35) {
+            ForEach(self.objects, id: \.name) { object in
+                NavigationLink( destination: FormulaDetail(formula: object)) {
+                    FormulaItem(object: object)
+                        .frame(width: abs(geometry.size.width - 20), height: abs(geometry.size.height / 1.8))
+                }
+                
+                Divider()
+                    .padding(.top, 50)
+            }
+        }
     }
 }
